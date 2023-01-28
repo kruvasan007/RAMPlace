@@ -3,7 +3,6 @@ pluginManagement {
         gradlePluginPortal()
         google()
         mavenCentral()
-        maven { url 'https://raw.githubusercontent.com/adrianoluis/rickandmortyapi-java/mvn-repo' }
     }
 }
 dependencyResolutionManagement {
