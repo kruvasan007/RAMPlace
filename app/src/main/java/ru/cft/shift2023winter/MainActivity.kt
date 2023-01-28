@@ -32,10 +32,10 @@ class MainActivity : AppCompatActivity() {
         recycleView.setHasFixedSize(true)
         layoutManager = LinearLayoutManager(this)
         recycleView.layoutManager = layoutManager
-        getAllMovieList()
+        getCharacterList()
     }
 
-    private fun getAllMovieList() {
+    private fun getCharacterList() {
         mService.getCharacterList().enqueue(object : Callback<SearchResult> {
             override fun onFailure(call: Call<SearchResult>, t: Throwable) {
             }
