@@ -32,9 +32,6 @@
                 android:layout_width="164dp"
                 android:layout_height="42dp"
                 android:layout_margin="10dp"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:fontFamily="@font/ptmono"
                 android:background="@drawable/search_style"
                 android:padding="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -42,7 +39,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:id="@+id/serch_button"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_margin="14dp"
@@ -53,29 +49,31 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <pl.droidsonroids.gif.GifImageView
             android:layout_width="72dp"
             android:id="@+id/loading_bar"
             android:layout_height="72dp"
             android:src="@drawable/portalgif"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="@+id/character_list"
-            app:layout_constraintRight_toRightOf="@+id/character_list"
-            app:layout_constraintTop_toTopOf="@+id/character_list" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/location_list" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/character_list"
-            android:layout_width="wrap_content"
+            android:id="@+id/location_list"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:transitionGroup="true"
-            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
+            android:orientation="vertical"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/header"
-            app:spanCount="2"
-            tools:listitem="@layout/character_item" />
+            tools:listitem="@layout/location_details" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

@@ -7,35 +7,41 @@
 
     <fragment
         android:id="@+id/mainScreen"
-        android:name="ru.cft.shift2023winter.MainScreen"
+        android:name="ru.cft.shift2023winter.Screen.MainFragment"
         android:label="fragment_main_screen"
         tools:layout="@layout/fragment_main_screen">
         <action
             android:id="@+id/action_mainScreen_to_descriptionFragment"
-            app:destination="@id/descriptionFragment"
-            app:enterAnim="@animator/nav_default_enter_anim"
-            app:exitAnim="@animator/nav_default_exit_anim"
-            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
-            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
+            app:destination="@id/descriptionFragment" />
+        <action
+            android:id="@+id/action_mainScreen_to_locationFragment"
+            app:destination="@id/locationFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/descriptionFragment"
-        android:name="ru.cft.shift2023winter.DescriptionFragment"
+        android:name="ru.cft.shift2023winter.Screen.DescriptionFragment"
         android:label="fragment_description"
-        tools:layout="@layout/fragment_description" >
+        tools:layout="@layout/fragment_description">
         <argument
             android:name="characterId"
             app:argType="integer" />
         <action
             android:id="@+id/action_descriptionFragment_to_mainScreen"
-            app:destination="@id/mainScreen"
-            app:enterAnim="@animator/nav_default_enter_anim"
-            app:exitAnim="@animator/nav_default_exit_anim"
-            app:popEnterAnim="@animator/nav_default_pop_enter_anim"
-            app:popExitAnim="@animator/nav_default_pop_exit_anim"/>
+            app:destination="@id/mainScreen" />
         <action
             android:id="@+id/action_descriptionFragment_self"
-            app:destination="@id/descriptionFragment"/>
+            app:destination="@id/descriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/locationFragment"
+        android:name="ru.cft.shift2023winter.Screen.LocationFragment"
+        android:label="LocationFragment">
+        <argument
+            android:name="locationId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_locationFragment_to_mainScreen"
+            app:destination="@id/mainScreen" />
     </fragment>
 </navigation>
