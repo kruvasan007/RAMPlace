@@ -1,7 +1,13 @@
 package ru.cft.shift2023winter.Data
 
+import android.app.Application
 import androidx.lifecycle.MutableLiveData
+import androidx.room.Room
 import kotlinx.coroutines.*
+import ru.cft.shift2023winter.App
+import ru.cft.shift2023winter.DataBase.AppDatabase
+import ru.cft.shift2023winter.DataBase.CharacterDao
+import ru.cft.shift2023winter.DataBase.CharacterDto
 import ru.cft.shift2023winter.Model.Locations
 import ru.cft.shift2023winter.RetrofitClient.Common
 
@@ -10,10 +16,13 @@ object Repository {
     private var job: Job? = null
     private val locationsList = MutableLiveData<List<Locations>>()
     private val characterList = MutableLiveData<List<ru.cft.shift2023winter.Model.Character>>()
+    private val likeCharacters = MutableLiveData<List<CharacterDto>>()
+    private val characterDao: CharacterDao = App.getDatabase()!!.characterDao()
     val loadError = MutableLiveData<String?>()
     val loading = MutableLiveData<Boolean>()
 
     init {
+        loadLikes()
         loadCharacters(1)
         loadLocations()
     }
@@ -26,6 +35,13 @@ object Repository {
     fun getLocationList(): MutableLiveData<List<Locations>> {
         if (job == null) refresh()
         return locationsList
+    }
+
+    fun getLikes() = likeCharacters
+
+    fun setLike(char: CharacterDto){
+        characterDao.insertCharacter(char)
+        loadLikes()
     }
 
     private fun loadLocations() {
@@ -48,6 +64,17 @@ object Repository {
     fun getCharacterList(): MutableLiveData<List<ru.cft.shift2023winter.Model.Character>> {
         if (job == null) refresh()
         return characterList
+    }
+
+    fun loadLikes() {
+        job = CoroutineScope(Dispatchers.Main).launch {
+            likeCharacters.value = characterDao.getAll()
+        }
+    }
+
+    fun deleteLike(character: CharacterDto) {
+        characterDao.delete(character)
+        loadLikes()
     }
 
     private fun loadCharacters(page: Int) {

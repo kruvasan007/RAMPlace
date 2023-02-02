@@ -40,8 +40,25 @@
         <argument
             android:name="locationId"
             app:argType="integer" />
+        <argument
+            android:name="characterId"
+            app:argType="integer" />
         <action
             android:id="@+id/action_locationFragment_to_mainScreen"
             app:destination="@id/mainScreen" />
+        <action
+            android:id="@+id/action_locationFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/likesFragment"
+        android:name="ru.cft.shift2023winter.Screen.LikesFragment"
+        android:label="LikesFragment" >
+        <argument
+            android:name="characterId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_likesFragment_to_descriptionFragment"
+            app:destination="@id/descriptionFragment" />
     </fragment>
 </navigation>

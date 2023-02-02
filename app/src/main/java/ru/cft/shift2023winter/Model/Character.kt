@@ -13,6 +13,7 @@ data class Character(
     var episode: List<String>? = null,
     var url: String? = null,
     var created: String? = null,
+    var liked: Boolean? = false,
 )
 
 data class Location(

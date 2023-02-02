@@ -58,6 +58,7 @@ class MainFragment : Fragment() {
             }
 
             override fun afterTextChanged(s: Editable) {
+                filter(s.toString())
             }
         })
         view.doOnPreDraw { startPostponedEnterTransition() }
@@ -70,8 +71,7 @@ class MainFragment : Fragment() {
                 temp.add(character)
             }
         }
-        characterList = temp
-        adapter.updateList(characterList)
+        adapter.updateList(temp)
     }
 
     override fun onDestroyView() {
